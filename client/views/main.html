@@ -1,0 +1,125 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Ryde - Ride Sharing App</title>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,geometry"></script><!-- 
+	<script type="text/javascript">
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		var autocomplete_source, autocomplete_destination;
+function initialize() {
+  var source = document.getElementById('source_place');
+  var destination = document.getElementById('destination_place');
+  autocomplete_source = new google.maps.places.Autocomplete(source);
+  autocomplete_destination = new google.maps.places.Autocomplete(destination);
+}
+
+function findDistance() {
+  var source_coordinate_lat = autocomplete_source.getPlace().geometry.location.lat();
+  var source_coordinate_long = autocomplete_source.getPlace().geometry.location.lng();
+  var destination_coordinate_lat = autocomplete_destination.getPlace().geometry.location.lat();
+  var destination_coordinate_long = autocomplete_destination.getPlace().geometry.location.lng();
+
+  var p1 = new google.maps.LatLng(source_coordinate_lat, source_coordinate_long);
+var p2 = new google.maps.LatLng(destination_coordinate_lat, destination_coordinate_long);
+  var distance = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2)
+  console.log(source_coordinate_lat + " " + destination_coordinate_lat, distance);
+  var distance_html = $('<div>').addClass('alert alert-success').html(distance + " KM");
+  console.log(distance_html);
+  // $('.row.distance').html(distance_html);
+
+}
+	</script> -->
+</head>
+<body>
+</body>
+<template name="masterLayout">
+<div id="nav">
+	{{> Template.dynamic template=navbar}}
+</div>
+<div id="content">
+	{{> Template.dynamic template=main}}
+</div>
+<footer>
+	{{> Template.dynamic template=footer}}
+</footer>
+</template>
+<template name="navbar">
+<div class="ui large top fixed inverted menu">
+	<a href="/" class="pink item active"><b>Ryde</b></a>
+	<a href="#" class="pink item">About</a>
+	<div class="right menu">
+		{{#if currentUser}}
+		<a href="javascript:void(0)" class="pink item logout"><button class="ui pink button">Logout</button></a>
+		{{else}}
+		{{#if showLogin}}
+		<a href="/sign-in" class="pink item login"><button class="ui pink button">Login</button></a>
+		{{/if}}
+		{{/if}}
+	</div>
+</div>
+</template>
+<template name="home">
+<div class="home-container">
+	<div class="ui centered grid main-layout">
+		<div class="row">
+			<h1 class="ui white center aligned huge header">
+			Share Ride. Make Buddies.
+			</h1>
+		</div>
+		<div class="row">
+		{{> searchRide}}
+		</div>
+			<div class="ui horizontal white divider">Or</div>
+
+		<div class="ui row">
+			<button class="ui pink labeled icon button offer-ride-btn">
+    			Offer a Ride
+    			<i class="car icon"></i>
+  			</button>
+		</div>
+	</div>
+</div>
+</template>
+<template name="formPage">
+<div class="ui three column centered grid">
+	<div class="column">
+		{{> atForm}}
+	</div>
+</div>
+</template>
+
+<template name="searchRide">
+				<div class="ten wide column">
+				<div class="ui form">
+					<div class="three fields">
+						<div class="field">
+							<div class="ui left icon input">
+								<input type="text" id="source_place" placeholder="Enter Source">
+								<i class="angle up icon"></i>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui left icon input">
+								<input type="text" id="destination_place" placeholder="Enter Destination">
+								<i class="angle down icon"></i>
+							</div>
+						</div>
+						<div class="field">
+							<button class="fluid ui pink right labeled icon button" id="search-ride-btn" onclick="findDistance">
+							<i class="search icon"></i>
+							Find a Ride
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+</template>
+
+
+<template name="footer">
+<!-- <p>♥ from Devs</p> -->
+</template>

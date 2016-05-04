@@ -1,0 +1,57 @@
+<template name="offerRide">
+<div class="offer-ride-container">
+	<div class="ui center aligned grid">
+		<div class="six wide column">
+			<h2 class="ui pink header">Offer a Ride</h2>
+			<form action="#" class="ui large form error">
+				<div class="ui stacked pink segment">
+					<h4 class="ui left aligned dividing header">Route Information</h4>
+					<div class="field">
+						<div class="ui left icon input">
+							<input type="text" id="departure" placeholder="Source">
+							<i class="angle up icon"></i>
+						</div>
+					</div>
+					<div class="field">
+						<div class="ui left icon input">
+							<input type="text" id="arrival" placeholder="Destination">
+							<i class="angle down icon"></i>
+						</div>
+					</div>
+					<h4 class="ui left aligned dividing header">Date &amp; Time</h4>
+					<div class="field">
+						<div class="ui left icon input">
+							<input type="datetime-local" id="date" placeholder="">
+							<i class="calendar icon"></i>
+						</div>
+					</div>
+					<h4 class="ui left aligned dividing header">Number of Seats</h4>
+					<div class="four wide field">
+						<div class="ui left icon input">
+							<input type="number" id="seats" step="1" min="1" value="1" max="6" placeholder="">
+							<i class="add user icon"></i>
+						</div>
+					</div>
+					<h4 class="ui left aligned dividing header">Price per Traveller</h4>
+					<div class="fields">
+						<div class="six wide field">
+						<div class="ui left labeled input">
+							<div class="ui pink label"><i class="rupee icon"></i></div>
+							<input type="number" id="price" step="10" min="0" max="6000" placeholder="">
+						</div>
+					</div>
+					<div class="eight wide field" style="padding-top: 5px">
+							<a class="ui hidden price_label large teal tag label">Suggested Price : Rs. {{travel_price}}</a>
+						</div>
+					</div>
+					<div class="field">
+						<button class="ui pink labeled icon large button">Publish
+						<i class="upload icon"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</template>
