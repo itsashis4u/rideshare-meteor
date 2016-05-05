@@ -1,0 +1,36 @@
+<template name="list">
+<div class="ui justified container">
+	{{#if ridesCount}}
+	<h2 class="ui pink header">My Rides</h2>
+	<table class="ui pink five column celled sortable padded fixed table">
+		<thead>
+			<tr>
+				<th class="single line">From</th>
+				<th>To</th>
+				<th>Date</th>
+				<th>Price</th>
+				<th>Seats</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each rides}}
+			<tr>
+				<td>{{from}}</td>
+				<td>{{to}}</td>
+				<td>{{time}}</td>
+				<td>{{price}}</td>
+				<td>{{seats}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+	{{else}}
+	<div class="ui centered card">
+		<div class="content">
+			<a class="header">No Data to Display.</a>
+			Let's get you started <a href="/offer-ride">here.</a>
+		</div>
+	</div>
+	{{/if}}
+</div>
+</template>

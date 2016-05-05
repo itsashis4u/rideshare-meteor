@@ -1,37 +1,13 @@
 <head>
 	<meta charset="utf-8">
+	<link rel="icon" 
+      type="image/png" 
+      href="/taxi.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title>Ryde - Ride Sharing App</title>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,geometry"></script><!-- 
-	<script type="text/javascript">
-		google.maps.event.addDomListener(window, 'load', initialize);
-
-		var autocomplete_source, autocomplete_destination;
-function initialize() {
-  var source = document.getElementById('source_place');
-  var destination = document.getElementById('destination_place');
-  autocomplete_source = new google.maps.places.Autocomplete(source);
-  autocomplete_destination = new google.maps.places.Autocomplete(destination);
-}
-
-function findDistance() {
-  var source_coordinate_lat = autocomplete_source.getPlace().geometry.location.lat();
-  var source_coordinate_long = autocomplete_source.getPlace().geometry.location.lng();
-  var destination_coordinate_lat = autocomplete_destination.getPlace().geometry.location.lat();
-  var destination_coordinate_long = autocomplete_destination.getPlace().geometry.location.lng();
-
-  var p1 = new google.maps.LatLng(source_coordinate_lat, source_coordinate_long);
-var p2 = new google.maps.LatLng(destination_coordinate_lat, destination_coordinate_long);
-  var distance = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2)
-  console.log(source_coordinate_lat + " " + destination_coordinate_lat, distance);
-  var distance_html = $('<div>').addClass('alert alert-success').html(distance + " KM");
-  console.log(distance_html);
-  // $('.row.distance').html(distance_html);
-
-}
-	</script> -->
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAopM9eUD9vR5GU2OcDwLJrMEWrQ0AvIDk&libraries=places,geometry"></script>
 </head>
 <body>
 </body>
@@ -47,11 +23,14 @@ var p2 = new google.maps.LatLng(destination_coordinate_lat, destination_coordina
 </footer>
 </template>
 <template name="navbar">
-<div class="ui large top fixed inverted menu">
+<div class="ui stackable large top fixed inverted menu">
 	<a href="/" class="pink item active"><b>Ryde</b></a>
-	<a href="#" class="pink item">About</a>
+	{{#if currentUser}}
+	<a href="/list" class="pink item">My Rides</a>
+	{{/if}}
 	<div class="right menu">
 		{{#if currentUser}}
+		<a href="javascript:void(0)" class="item">{{currentUser.profile.fullname}}</a>
 		<a href="javascript:void(0)" class="pink item logout"><button class="ui pink button">Logout</button></a>
 		{{else}}
 		{{#if showLogin}}
@@ -118,7 +97,6 @@ var p2 = new google.maps.LatLng(destination_coordinate_lat, destination_coordina
 			</div>
 
 </template>
-
 
 <template name="footer">
 <!-- <p>♥ from Devs</p> -->

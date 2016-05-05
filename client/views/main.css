@@ -27,3 +27,12 @@
 .offer-ride-container{
 	background-color: #F5F5F5;
 }
+
+#map-container{
+	width: 100%;
+	height: calc(50vh);
+}
+
+.map-segment{
+	margin-top: 40px !important;
+}

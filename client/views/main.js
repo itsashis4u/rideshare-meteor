@@ -63,6 +63,7 @@ Template.searchRide.onRendered(function () {
 Template.offerRide.onRendered( function(){
 	var o_source = document.getElementById('departure');
   	var o_destination = document.getElementById('arrival');
+
   	var depart = new google.maps.places.Autocomplete(o_source);
   	var arrive = new google.maps.places.Autocomplete(o_destination);
 
@@ -114,24 +115,80 @@ Template.offerRide.events({
 		
 	},
 	'blur #arrival' : function(){
-		setTimeout(function(){
-			var p1 = new google.maps.LatLng(Session.get('depart_lat'), Session.get('depart_lng'));
-		var p2 = new google.maps.LatLng(Session.get('arrive_lat'), Session.get('arrive_lng'));
-  		var distance = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
-  		Session.set('distance', distance);
-		}, 500)
+		getDistance();
+		plotDistance();
 	},
 	'blur #departure' : function(){
 		if(document.getElementById('arrival').value != ""){
-			setTimeout(function(){
-			var p1 = new google.maps.LatLng(Session.get('depart_lat'), Session.get('depart_lng'));
-		var p2 = new google.maps.LatLng(Session.get('arrive_lat'), Session.get('arrive_lng'));
-  		var distance = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
-  		Session.set('distance', distance);
-		}, 500)
+			getDistance();
+			plotDistance();
 		}
 	},
 	'click .price_label' : function(){
 		$('#price').val(Session.get('travel_cost'));
+	},
+	'submit form' : function(e, t){
+		e.preventDefault();
+		var ride = {};
+		ride.owner = Meteor.user().profile.fullname;
+		ride.ownerId = Meteor.userId();
+		ride.ownerVehicle = Meteor.user().profile.vehiclename;
+		ride.ownerMobile = Meteor.user().profile.phonenumber;
+		ride.from = t.$('#departure').val();
+		ride.to = t.$('#arrival').val();
+		ride.from_coords = {}, ride.to_coords = {};
+		ride.from_coords.lat = Session.get('depart_lat');
+		ride.from_coords.lng = Session.get('depart_lng');
+		ride.to_coords.lat = Session.get('arrive_lat');
+		ride.to_coords.lng = Session.get('arrive_lng');
+		ride.time = t.$('#date').val();
+		ride.seats = t.$('#seats').val();
+		ride.distance = Session.get('distance');
+		ride.price = t.$('#price').val();
+		ride.polyline = Session.get('polyline');
+		ride.createdAt = new Date();
+		console.log(Rides.insert(ride));
+		FlowRouter.go('list');
 	}
 });
+
+function getDistance(){
+	setTimeout(function(){
+			var p1 = new google.maps.LatLng(Session.get('depart_lat'), Session.get('depart_lng'));
+		var p2 = new google.maps.LatLng(Session.get('arrive_lat'), Session.get('arrive_lng'));
+  		var distance = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+  		Session.set('distance', distance);
+		}, 500)
+}
+
+function plotDistance(){
+	setTimeout(function(){
+		var waypt = [];
+		var map = new google.maps.Map(document.getElementById('map-container'), {
+          zoom: 8,
+          center: {lat: 20.2961, lng: 85.8245}
+        });
+	var directionsService = new google.maps.DirectionsService;
+	var directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsDisplay.setMap(map);
+	var o = document.getElementById('departure').value;
+	var d = document.getElementById('arrival').value;
+	console.log(o, d)
+	directionsService.route({
+          origin: o,
+          destination: d,
+          waypoints: waypt,
+          optimizeWaypoints: true,
+          travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+          if (status === google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+            var route = response.routes[0];
+            console.log(route.overview_polyline);
+            Session.set('polyline', route.overview_polyline); 
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+	}, 500)
+}
