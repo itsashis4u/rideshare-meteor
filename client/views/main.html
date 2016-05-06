@@ -22,24 +22,8 @@
 	{{> Template.dynamic template=footer}}
 </footer>
 </template>
-<template name="navbar">
-<div class="ui stackable large top fixed inverted menu">
-	<a href="/" class="pink item active"><b>Ryde</b></a>
-	{{#if currentUser}}
-	<a href="/list" class="pink item">My Rides</a>
-	{{/if}}
-	<div class="right menu">
-		{{#if currentUser}}
-		<a href="javascript:void(0)" class="item">{{currentUser.profile.fullname}}</a>
-		<a href="javascript:void(0)" class="pink item logout"><button class="ui pink button">Logout</button></a>
-		{{else}}
-		{{#if showLogin}}
-		<a href="/sign-in" class="pink item login"><button class="ui pink button">Login</button></a>
-		{{/if}}
-		{{/if}}
-	</div>
-</div>
-</template>
+
+
 <template name="home">
 <div class="home-container">
 	<div class="ui centered grid main-layout">
@@ -61,7 +45,108 @@
 		</div>
 	</div>
 </div>
+
+<div class="ui segment">
+<h1 class="ui center aligned header">
+    How to offer a ryde?
+  </h1>
+</div>
+
+<div class="ui grid">
+	<div class="four wide center aligned column">
+  		<div id="hex1" class="hexagon-wrapper">
+  		<div id="color1" class="hexagon">
+
+  <i class="cloud upload icon huge own-class"></i>
+  	</div>
+  </div>
+    	<h3>PUBLISH</h3>
+  		<h4>Choose your source,destination and per seat price and in one single tap publish your ryde.</h4>
+
+  </div>
+
+  <div class="four wide center aligned column">
+  	<div id="hex1" class="hexagon-wrapper">
+  <div id="color1" class="hexagon">
+  <i class="huge phone square icon own-class"></i>
+  </div>
+  </div>
+  <h3>GET REQUESTS</h3>
+  <h4>Get requests from passengers around you who are willing to share ryde with you in the same direction.</h4>
+  </div>
+
+  <div class="four wide center aligned column">
+  	<div id="hex1" class="hexagon-wrapper">
+  <div id="color1" class="hexagon">
+  <i class=" huge car icon own-class"></i>
+  </div>
+  </div>
+   <h3>PICK AND DROP</h3>
+  <h4>Pick your favourite passengers and drop them to their destinations</h4>
+  </div>
+  <div class="four wide center aligned column">
+  	<div id="hex1" class="hexagon-wrapper">
+  <div id="color1" class="hexagon">
+  <i class="huge money icon own-class"></i>
+  </div>
+  </div>
+  <h3>EARN</h3>
+  <h4>When your ryde ends review your passenger,review your passengers and get the money in your account.</h4>
+  </div>
+</div>
+<div class="ui section divider d1"></div>
+
+<div class="ui segment">
+
+<h1 class="ui center aligned header">
+    How to book a ryde?
+  </h1>
+</div>
+
+<div class="ui grid">
+	<div class="four wide center aligned column">
+  		<div class="hexagon-wrapper hex2">
+  		<div id="color2" class="hexagon color2">
+  <i class="search icon huge own-class"></i>
+  	</div>
+  </div>
+  <h3>DISCOVER</h3>
+  		<h4>Search and getmatched with trusted members of the community who are offering their rydes.</h4>
+  </div>
+
+  <div class="four wide center aligned column">
+  	<div class="hexagon-wrapper hex2">
+  <div class="hexagon color2">
+  <i class="huge ticket icon own-class"></i>
+  </div>
+  
+  </div>
+  <h3>BOOK</h3>
+  <h4>Pay offline and book the number of seats</h4>
+  </div>
+
+  <div class="four wide center aligned column">
+  	<div class="hexagon-wrapper hex2">
+  <div id="color2" class="hexagon color2">
+  <i class=" huge users icon own-class"></i>
+  </div>
+  </div>
+   <h3>CONNECT</h3>
+  <h4>Simply call the customer and set up your pick up location.</h4>
+  </div>
+
+  <div class="four wide center aligned column">
+  	<div class="hexagon-wrapper hex2">
+  <div id="color2" class="hexagon color2">
+  <i class="huge check circle icon own-class"></i>
+  </div>
+  </div>
+  <h3>REVIEW</h3>
+  <h4>When your ryde ends review your driver and co-passengers and say thanks.</h4>
+  </div>
+</div>
 </template>
+
 <template name="formPage">
 <div class="ui three column centered grid">
 	<div class="column">
@@ -70,33 +155,7 @@
 </div>
 </template>
 
-<template name="searchRide">
-				<div class="ten wide column">
-				<div class="ui form">
-					<div class="three fields">
-						<div class="field">
-							<div class="ui left icon input">
-								<input type="text" id="source_place" placeholder="Enter Source">
-								<i class="angle up icon"></i>
-							</div>
-						</div>
-						<div class="field">
-							<div class="ui left icon input">
-								<input type="text" id="destination_place" placeholder="Enter Destination">
-								<i class="angle down icon"></i>
-							</div>
-						</div>
-						<div class="field">
-							<button class="fluid ui pink right labeled icon button" id="search-ride-btn" onclick="findDistance">
-							<i class="search icon"></i>
-							Find a Ride
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
 
-</template>
 
 <template name="footer">
 <!-- <p>♥ from Devs</p> -->

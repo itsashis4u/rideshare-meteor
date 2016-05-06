@@ -36,3 +36,118 @@
 .map-segment{
 	margin-top: 40px !important;
 }
+
+
+.ui.center.aligned.header{
+	font-size: 60px;
+}
+
+/*#hex1 {
+  width: 150px;
+  height: 150px;
+}*/
+#color1 {
+  background-color: #FF6699;
+}
+
+.hexagon-wrapper {
+  text-align: center;
+  margin: 48px;
+  position: relative;
+  display: inline-block;
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+/*.hexagon {
+  height: 100%;
+  width: calc(100% * 0.57735);
+  display: inline-block;
+}
+.hexagon:before {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  backface-visibility: hidden;
+  transform: rotateZ(60deg);
+}
+.hexagon:after {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  transform: rotateZ(-60deg);
+}*/
+
+.own-class{
+	color:white;
+}
+/*#hex2 {
+  width: 150px;
+  height: 150px;
+}*/
+.color2 {
+  background-color: #66CCFF !important;
+}
+.hexagon {
+	width: 100px;
+	height: 55px;
+	background: red;
+	position: relative;
+}
+.hexagon:before {
+	content: "";
+	position: absolute;
+	top: -24px;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 25px solid #ff6699;
+}
+.hexagon:after {
+	content: "";
+	position: absolute;
+	bottom: -24px;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 25px solid #ff6699;
+
+}
+
+.hexagon.color2:before {
+	content: "";
+	position: absolute;
+	top: -24px;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 25px solid #66CCFF;
+}
+.hexagon.color2:after {
+	content: "";
+	position: absolute;
+	bottom: -24px;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 25px solid #66CCFF;
+
+}
+.ui.divider.d1{
+	height: 200px;
+}
