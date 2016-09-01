@@ -19,7 +19,7 @@ This application uses `Meteor` framework, `MongoDB` as Database, `Semantic-UI` a
 **For rider :**
 - Register yourself
 - Click on `Offer Ride`
-- Enter the details and select the fare *(You can make it **free** as well)*
+- Enter the details and select the fare (You can make it **free** as well)
 - Publish
 
 **For passenger :**
