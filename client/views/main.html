@@ -23,6 +23,25 @@
 </footer>
 </template>
 
+<template name="navbar">
+<div class="ui stackable large top fixed inverted menu">
+  <a href="/" class="pink item active"><b>Ryde</b></a>
+  {{#if currentUser}}
+  <a href="/list" class="pink item">My Rides</a>
+  {{/if}}
+  <div class="right menu">
+    {{#if currentUser}}
+    <a href="javascript:void(0)" class="item">{{currentUser.profile.fullname}}</a>
+    <a href="javascript:void(0)" class="pink item logout"><button class="ui pink button">Logout</button></a>
+    {{else}}
+    {{#if showLogin}}
+    <a href="/sign-in" class="pink item login"><button class="ui pink button">Login</button></a>
+    {{/if}}
+    {{/if}}
+  </div>
+</div>
+</template>
+
 
 <template name="home">
 <div class="home-container">
