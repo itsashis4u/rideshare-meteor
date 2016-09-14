@@ -155,7 +155,33 @@
 </div>
 </template>
 
+<template name="searchRide">
+        <div class="ten wide column">
+        <div class="ui form">
+          <div class="three fields">
+            <div class="field">
+              <div class="ui left icon input">
+                <input type="text" id="source_place" placeholder="Enter Source">
+                <i class="angle up icon"></i>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <input type="text" id="destination_place" placeholder="Enter Destination">
+                <i class="angle down icon"></i>
+              </div>
+            </div>
+            <div class="field">
+              <button class="fluid ui pink right labeled icon button" id="search-ride-btn" onclick="findDistance">
+              <i class="search icon"></i>
+              Find a Ride
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
+</template>
 
 <template name="footer">
 <!-- <p>♥ from Devs</p> -->
